@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Helpers;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.AnalogInput;
 import com.qualcomm.robotcore.hardware.AnalogOutput;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -27,24 +28,20 @@ public class I2draw {
     }
 
     public double getRobotCurrent(){
-        I = Math.abs((5 * current_side.getVoltage()) / .066);
+        I = Math.abs((current_side.getVoltage()-2.5) / .066);
         return I;
     }
     public double getRobotVoltage(){
-        V = (5 * voltage_side.getVoltage())/(47/142.3);
+        V = (voltage_side.getVoltage())/(47/142.3);
         return V;
     }
     public double getRobotPower(){
         P = getRobotVoltage()*getRobotCurrent();
         return P;
     }
-    public double getRobotResistance(){
-        R = getRobotVoltage()/getRobotCurrent();
+    public double getRobotResistance() {
+        R = getRobotVoltage() / getRobotCurrent();
         return R;
 
     }
-
-
-
-
 }
